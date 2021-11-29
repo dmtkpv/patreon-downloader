@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "setup": "node src/setup",
+        "start": "node src/start"
+    },
+    "dependencies": {
+        "axios": "^0.24.0",
+        "dotenv": "^10.0.0"
+    }
+}
