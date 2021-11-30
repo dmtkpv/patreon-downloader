@@ -22,40 +22,33 @@ const readline = require('readline').createInterface({
 const questions = [
     {
         key: 'EMAIL',
-        text: 'Email (optional): ',
         default: process.env.EMAIL || ''
     },
     {
         key: 'PASSWORD',
-        text: 'Password (optional): ',
         default: process.env.PASSWORD || ''
     },
     {
-        key: 'CAMPAIGN_ID',
-        text: 'Campaign ID: ',
+        key: 'CREATOR_ID',
         default: process.env.CAMPAIGN_ID,
         required: true
     },
     {
         key: 'LIMIT',
-        text: 'Posts limit: ',
         default: process.env.LIMIT || '-1',
         required: true,
     },
     {
         key: 'CURSOR',
-        text: 'Cursor (optional): ',
         default: process.env.CURSOR || '',
     },
     {
         key: 'FILENAME',
-        text: 'Filename template: ',
         default: process.env.FILENAME || 'title',
         required: true,
     },
     {
         key: 'DESTINATION',
-        text: 'Destination directory: ',
         default: process.env.DESTINATION || path.join(__dirname, '../uploads'),
         required: true,
     }
@@ -79,16 +72,18 @@ function ask () {
         return process.exit(0);
     }
 
-    readline.question(question.text, answer => {
+    let text = question.key;
+    if (!question.required) text += ' (optional)';
+    text += ': ';
+
+    readline.question(text, answer => {
         if (question.required && !answer) return ask(question);
         question.answer = JSON.stringify(answer);
         active++;
         ask();
     });
 
-    if (question.default) {
-        readline.write(question.default);
-    }
+    readline.write(question.default);
 
 }
 

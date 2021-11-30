@@ -40,7 +40,7 @@ const API = {
             method: 'GET',
             url: 'https://www.patreon.com/api/posts',
             params: {
-                'filter[campaign_id]': process.env.CAMPAIGN_ID,
+                'filter[campaign_id]': process.env.CREATOR_ID,
                 'filter[contains_exclusive_posts]': true,
                 'sort': '-published_at',
                 'page[cursor]': cursor
