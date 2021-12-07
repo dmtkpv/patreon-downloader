@@ -98,7 +98,7 @@ if (limit < 1) limit = Number.MAX_VALUE;
 
 function getFileName (attrs) {
     const fn = new Function(...Object.keys(attrs), `return ${process.env.FILENAME}`);
-    return fn(...Object.values(attrs)).replace(/\//g, '\u2215');
+    return fn(...Object.values(attrs)).replace(/[/\\?%*:|"<>.]/g, '_');
 }
 
 function writeFile (stream) {
