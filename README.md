@@ -1,6 +1,9 @@
 # patreon-downloader
 Download creator files from Patreon
 
+## Requirements
+Node.js 14+
+
 ## Installation
 ```
 git clone https://github.com/dmtkpv/patreon-downloader.git
